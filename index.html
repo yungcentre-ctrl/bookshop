@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moonlight Books</title>
+
+    <!-- jQuery Mobile CSS CDN -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+    <!-- jQuery & jQuery Mobile JS CDN -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .ui-page, 
+        .ui-page-theme-a, 
+        .ui-page-theme-b {
+            background-color: inherit !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #7508cd;
+            color: #c0a7a7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #75c7d4;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 140px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin: 10px 0 8px 0;
+            font-size: 1.1rem;
+            color: #ec0537;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #2a0ba5;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .contact-container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #858486;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .contact-item strong {
+            width: 90px;
+            color: #2c3e50;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 14px;
+            color: #d8bf18;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HOME PAGE -->
+<div data-role="page" id="home">
+    <div data-role="header" data-theme="b">
+        <h1>Moonlight Books</h1>
+    </div>
+
+    <!-- NAVBAR -->
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#home" class="ui-btn-active">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <div data-role="content" class="container">
+        <h2>Welcome to Moonlight Books!</h2>
+        <p>Moonlight Books offers a wide selection of books for all ages. Come and explore our collection of history, story, and science books!</p>
+        
+        <h3>Our Specialties</h3>
+
+        <!-- Responsive Card Grid -->
+        <div class="card-grid">
+            <div class="card">
+                <img src="images/history book.jpg" alt="History Book">
+                <h3>History Book</h3>
+                <p>A fascinating look at the history of our beloved town.</p>
+            </div>
+
+            <div class="card">
+                <img src="images/story book.jpg" alt="Story Book">
+                <h3>Story Book</h3>
+                <p>A collection of heartwarming stories that will captivate readers of all ages.</p>
+            </div>
+
+            <div class="card">
+                <img src="images/science book.jpg" alt="Science Book">
+                <h3>Science Book</h3>
+                <p>An engaging exploration of scientific concepts and discoveries.</p>
+            </div>
+
+            <div class="card">
+                <img src="images/note book.jpg" alt="Note Book">
+                <h3>NoteBook</h3>
+                <p>A handy notebook for jotting down ideas and important notes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="footer" data-theme="b" data-position="fixed">
+        <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
+    </div>
+</div>
+
+<!-- PRODUCTS PAGE -->
+<div data-role="page" id="products">
+    <div data-role="header" data-theme="b">
+        <a href="#home" data-icon="home" data-iconpos="notext"></a>
+        <h1>Our Books</h1>
+    </div>
+
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products" class="ui-btn-active">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <div data-role="content" class="container">
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <img src="images/history book.jpg" alt="history book">
+                <h2>History Book</h2>
+                <p>A fascinating look at the history of our beloved town.</p>
+            </li>
+            
+            <li>
+                <img src="images/story book.jpg" alt="story book">
+                <h2>Story Book</h2>
+                <p>A collection of heartwarming stories that will captivate readers of all ages.</p>
+            </li>
+
+            <li>
+                <img src="images/science book.jpg" alt="science book">
+                <h2>Science Book</h2>
+                <p>An engaging exploration of scientific concepts and discoveries.</p>
+            </li>
+
+            <li>
+                <img src="images/note book.jpg" alt="notebook">
+                <h2>NoteBook</h2>
+                <p>A handy notebook for jotting down ideas and important notes.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-theme="b" data-position="fixed">
+        <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
+    </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div data-role="page" id="contact">
+    <div data-role="header" data-theme="b">
+        <a href="#home" data-icon="home" data-iconpos="notext"></a>
+        <h1>Contact Us</h1>
+    </div>
+
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact" class="ui-btn-active">Contact</a></li>
+        </ul>
+    </div>
+
+    <div data-role="content" class="container">
+        <div class="contact-container">
+            <div class="contact-item">
+                <strong>Email:</strong> info@moonlightbooks.com
+            </div>
+            <div class="contact-item">
+                <strong>Phone:</strong> +60 123-456789
+            </div>
+            <div class="contact-item">
+                <strong>Address:</strong> Kuching, Sarawak, Malaysia
+            </div>
+        </div>
+    </div>
+
+    <div data-role="footer" data-theme="b" data-position="fixed">
+        <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
+    </div>
+</div>
+
+</body>
+</html>
