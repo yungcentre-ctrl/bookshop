@@ -226,19 +226,31 @@
         </ul>
     </div>
 
-    <div data-role="content" class="container">
-        <div class="contact-container">
-            <div class="contact-item">
-                <strong>Email:</strong> info@moonlightbooks.com
-            </div>
-            <div class="contact-item">
-                <strong>Phone:</strong> +60 123-456789
-            </div>
-            <div class="contact-item">
-                <strong>Address:</strong> Kuching, Sarawak, Malaysia
-            </div>
+  <!-- Contact Section -->
+    <section id="CONTACT" class="py-5 bg-dark">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <h2 class="text-center text-white mb-4 fw-bold">CONTACT US</h2>
+            <form class="p-4 rounded border border-secondary" style="background-color: #1a1f29;">
+              <div class="mb-3">
+                <label for="name" class="form-label text-white">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label text-white">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label text-white">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Your Feedback or Inquiry..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-danger w-100">Send Message</button>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
     <div data-role="footer" data-theme="b" data-position="fixed">
         <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
