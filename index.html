@@ -226,32 +226,30 @@
         </ul>
     </div>
 
-  <!-- Contact Section -->
-    <section id="CONTACT" class="py-5 bg-dark">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <h2 class="text-center text-white mb-4 fw-bold">CONTACT US</h2>
-            <form class="p-4 rounded border border-secondary" style="background-color: #1a1f29;">
-              <div class="mb-3">
-                <label for="name" class="form-label text-white">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label text-white">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label text-white">Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Your Feedback or Inquiry..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-danger w-100">Send Message</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="contact-container">
+    <form id="contactForm">
+        <h2>Contact Us</h2>
 
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"><br>
+
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject"><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" cols="40" placeholder="Write your message here..." required></textarea><br>
+
+        <button type="submit">Send Message</button>
+        <button type="reset">Clear</button>
+
+       
+    </form>
     <div data-role="footer" data-theme="b" data-position="fixed">
         <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
     </div>
