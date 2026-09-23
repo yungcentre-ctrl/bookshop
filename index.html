@@ -19,8 +19,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #7508cd;
-            color: #c0a7a7;
+            background-color: #f8f9fa;
+            color: #333;
             margin: 0;
             padding: 0;
         }
@@ -39,7 +39,7 @@
         }
 
         .card {
-            background: #75c7d4;
+            background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             overflow: hidden;
@@ -68,12 +68,12 @@
         .card h3 {
             margin: 10px 0 8px 0;
             font-size: 1.1rem;
-            color: #ec0537;
+            color: #2c3e50;
         }
 
         .card p {
             font-size: 0.9rem;
-            color: #2a0ba5;
+            color: #666;
             line-height: 1.4;
             margin: 0;
         }
@@ -81,7 +81,7 @@
         .contact-container {
             max-width: 500px;
             margin: 20px auto;
-            background: #858486;
+            background: #ffffff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -102,7 +102,41 @@
         .footer-text {
             text-align: center;
             font-size: 14px;
-            color: #d8bf18;
+            color: #fff;
+        }
+
+        /* ADDED: Order Modal styling for Task 3 & 4 requirements */
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .order-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            margin: 10% auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .price-summary {
+            background: #eef2f7;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
         }
     </style>
 </head>
@@ -128,32 +162,50 @@
         <h2>Welcome to Moonlight Books!</h2>
         <p>Moonlight Books offers a wide selection of books for all ages. Come and explore our collection of history, story, and science books!</p>
         
+        <!-- ADDED: Interactive jQuery Banner/Notification for Task 2 -->
+        <div id="promoBanner" style="background-color: #28a745; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 15px;">
+            🎉 Special Offer: Free shipping on orders over RM50! Click to dismiss.
+        </div>
+        <button id="toggleInfoBtn" class="ui-btn ui-corner-all ui-btn-b">Show/Hide Store Info</button>
+        <div id="storeInfo" style="display:none; padding:10px; background:#e9ecef; border-radius:6px; margin-bottom:15px;">
+            <p><strong>Store Hours:</strong> 9:00 AM - 9:00 PM (Mon-Sat)</p>
+            <p><strong>Location:</strong> Politeknik Kuching Sarawak</p>
+        </div>
+
         <h3>Our Specialties</h3>
 
         <!-- Responsive Card Grid -->
         <div class="card-grid">
             <div class="card">
-                <img src="images/history book.jpg" alt="History Book"  width="140" height="180">
+                <img src="history book.jpg" alt="History Book" width="140" height="180">
                 <h3>History Book</h3>
                 <p>A fascinating look at the history of our beloved town.</p>
+                <!-- UPDATED: Activated Buy Button with onclick handler -->
+                <button type="button" class="btn btn-danger w-100 buy-btn" onclick="openOrderModal('History Book', 29.90)">RM29.90 - Buy Now</button>
             </div>
 
             <div class="card">
-                <img src="images/story book.jpg" alt="Story Book"  width="140" height="180">
+                <img src="story book.jpg" alt="Story Book" width="140" height="180">
                 <h3>Story Book</h3>
                 <p>A collection of heartwarming stories that will captivate readers of all ages.</p>
+                <!-- UPDATED: Activated Buy Button with onclick handler -->
+                <button type="button" class="btn btn-danger w-100 buy-btn" onclick="openOrderModal('Story Book', 24.90)">RM24.90 - Buy Now</button>
             </div>
 
             <div class="card">
-                <img src="images/science book.jpg" alt="Science Book"  width="140" height="180">
+                <img src="science book.jpg" alt="Science Book" width="140" height="180">
                 <h3>Science Book</h3>
                 <p>An engaging exploration of scientific concepts and discoveries.</p>
+                <!-- UPDATED: Activated Buy Button with onclick handler -->
+                <button type="button" class="btn btn-danger w-100 buy-btn" onclick="openOrderModal('Science Book', 39.90)">RM39.90 - Buy Now</button>
             </div>
 
             <div class="card">
-                <img src="images/note book.jpg" alt="Note Book"  width="140" height="180">
+                <img src="note book.jpg" alt="Note Book" width="140" height="180">
                 <h3>NoteBook</h3>
                 <p>A handy notebook for jotting down ideas and important notes.</p>
+                <!-- UPDATED: Activated Buy Button with onclick handler -->
+                <button type="button" class="btn btn-danger w-100 buy-btn" onclick="openOrderModal('Note Book', 25.50)">RM25.50 - Buy Now</button>
             </div>
         </div>
     </div>
@@ -181,27 +233,39 @@
     <div data-role="content" class="container">
         <ul data-role="listview" data-inset="true">
             <li>
-                <img src="images/history book.jpg" alt="history book"  width="140" height="180">
-                <h2>History Book</h2>
-                <p>A fascinating look at the history of our beloved town.</p>
+                <a href="javascript:void(0)" onclick="openOrderModal('History Book', 29.90)">
+                    <img src="history book.jpg" alt="history book" width="140" height="180">
+                    <h2>History Book</h2>
+                    <p>A fascinating look at the history of our beloved town.</p>
+                    <p class="ui-li-aside"><strong>RM29.90</strong></p>
+                </a>
             </li>
             
             <li>
-                <img src="images/story book.jpg" alt="story book"  width="140" height="180">
-                <h2>Story Book</h2>
-                <p>A collection of heartwarming stories that will captivate readers of all ages.</p>
+                <a href="javascript:void(0)" onclick="openOrderModal('Story Book', 24.90)">
+                    <img src="story book.jpg" alt="story book" width="140" height="180">
+                    <h2>Story Book</h2>
+                    <p>A collection of heartwarming stories that will captivate readers of all ages.</p>
+                    <p class="ui-li-aside"><strong>RM24.90</strong></p>
+                </a>
             </li>
 
             <li>
-                <img src="images/science book.jpg" alt="science book"  width="140" height="180">
-                <h2>Science Book</h2>
-                <p>An engaging exploration of scientific concepts and discoveries.</p>
+                <a href="javascript:void(0)" onclick="openOrderModal('Science Book', 39.90)">
+                    <img src="science book.jpg" alt="science book" width="140" height="180">
+                    <h2>Science Book</h2>
+                    <p>An engaging exploration of scientific concepts and discoveries.</p>
+                    <p class="ui-li-aside"><strong>RM39.90</strong></p>
+                </a>
             </li>
 
             <li>
-                <img src="images/note book.jpg" alt="notebook"  width="140" height="180">
-                <h2>NoteBook</h2> 
-                <p>A handy notebook for jotting down ideas and important notes.</p>
+                <a href="javascript:void(0)" onclick="openOrderModal('Note Book', 25.50)">
+                    <img src="note book.jpg" alt="notebook" width="140" height="180">
+                    <h2>NoteBook</h2>
+                    <p>A handy notebook for jotting down ideas and important notes.</p>
+                    <p class="ui-li-aside"><strong>RM25.50</strong></p>
+                </a>
             </li>
         </ul>
     </div>
@@ -226,7 +290,7 @@
         </ul>
     </div>
 
-  <div class="contact-container">
+ <div class="contact-container">
     <form id="contactForm">
         <h2>Contact Us</h2>
 
@@ -247,13 +311,101 @@
 
         <button type="submit">Send Message</button>
         <button type="reset">Clear</button>
-
-       
     </form>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevents the form from submitting and causing the page error
+        alert("Message sent successfully!");
+    });
+</script>
+
     <div data-role="footer" data-theme="b" data-position="fixed">
         <h4 class="footer-text">©️ 2026 Moonlight Books</h4>
     </div>
 </div>
+
+<!-- ADDED: Order Modal Component for Purchasing Books (Task 3, 4 & 5 compliance) -->
+<div id="orderModal" class="order-modal">
+    <div class="order-content">
+        <h3 id="modalBookTitle">Order Book</h3>
+        <p>Unit Price: RM<span id="modalBookPrice">0.00</span></p>
+        
+        <form id="purchaseForm">
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" required placeholder="Enter your name">
+
+            <label for="bookQuantity">Quantity:</label>
+            <input type="number" id="bookQuantity" value="1" min="1" max="50" onchange="calculateTotalPrice()" onkeyup="calculateTotalPrice()">
+
+            <div class="price-summary">
+                Total Price: RM<span id="totalPriceDisplay">0.00</span>
+            </div>
+
+            <button type="button" class="ui-btn ui-btn-b ui-corner-all" onclick="confirmOrder()">Confirm Order</button>
+            <button type="button" class="ui-btn ui-corner-all" onclick="closeOrderModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADDED: jQuery Interactivity & JavaScript Logic for Task Requirements -->
+<script>
+    var currentUnitPrice = 0;
+
+    // --- Task 2: jQuery Functions (click, fadeOut, slideToggle) ---
+    $(document).ready(function() {
+        // jQuery Function 1: click() & fadeOut()
+        $("#promoBanner").click(function() {
+            $(this).fadeOut(500);
+        });
+
+        // jQuery Function 2: slideToggle()
+        $("#toggleInfoBtn").click(function() {
+            $("#storeInfo").slideToggle(300);
+        });
+    });
+
+    // --- Task 3: JavaScript Functions (Calculate Total Price & Confirm Order) ---
+    // JavaScript Function 1: Calculate total price dynamically
+    function calculateTotalPrice() {
+        var qty = parseInt(document.getElementById("bookQuantity").value) || 0;
+        var total = currentUnitPrice * qty;
+        document.getElementById("totalPriceDisplay").innerText = total.toFixed(2);
+    }
+
+    function openOrderModal(title, price) {
+        currentUnitPrice = price;
+        document.getElementById("modalBookTitle").innerText = "Order: " + title;
+        document.getElementById("modalBookPrice").innerText = price.toFixed(2);
+        document.getElementById("bookQuantity").value = 1;
+        calculateTotalPrice();
+        $("#orderModal").fadeIn(300); // jQuery Function 3: fadeIn()
+    }
+
+    function closeOrderModal() {
+        $("#orderModal").fadeOut(300);
+    }
+
+    // JavaScript Function 2: Validate input & show confirmation message
+    function confirmOrder() {
+        var name = document.getElementById("customerName").value.trim();
+        var qty = document.getElementById("bookQuantity").value;
+        var total = document.getElementById("totalPriceDisplay").innerText;
+
+        if (name === "") {
+            alert("Please enter your name to proceed with the purchase.");
+            return;
+        }
+
+        var confirmed = confirm("Hello " + name + "!\nDo you want to confirm your order for " + qty + " copy/copies total RM" + total + "?");
+        if (confirmed) {
+            alert("Thank you for your purchase! Your order has been placed successfully.");
+            closeOrderModal();
+            document.getElementById("customerName").value = "";
+        }
+    }
+</script>
 
 </body>
 </html>
